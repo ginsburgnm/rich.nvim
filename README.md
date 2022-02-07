@@ -100,7 +100,7 @@ vim.g.glow_style = "dracula"
 
 - Pressing `q` will automatically close the window
 - No path arg means rich uses current path in vim
-- `:Rich` command will work as toogle feature, so calling it will open or close
+- `:Rich` command will work as toggle feature, so calling it will open or close
 the current preview
 
 You can also create a mapping getting a preview of the current file

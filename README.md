@@ -102,6 +102,14 @@ vim.g.rich_style = "dracula"
 - No path arg means rich uses current path in vim
 - `:Rich` command will work as toggle feature, so calling it will open or close
 the current preview
+- you can also pass arbitrary arguments to `rich-cli` when doing so all arguments
+must come after the file name or you must not provide a filename
+
+Example to force markdown rendering on current file
+
+```viml
+:Rich -m
+```
 
 You can also create a mapping getting a preview of the current file
 

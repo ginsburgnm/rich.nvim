@@ -30,7 +30,7 @@ local function validate(path, error)
   -- check if file exists
   if not file_exists then
     if error then
-      api.nvim_err_writeln(string.format("file %s does not exists", path))
+      api.nvim_err_writeln(string.format("file %s does not exist", path))
       return
     else
       return nil

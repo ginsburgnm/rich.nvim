@@ -17,7 +17,7 @@ local function has_value(tab, val)
   return false
 end
 
-local function validate(path)
+local function validate(path, error)
 
   -- trim and get the full path
   path = string.gsub(path, "%s+", "")
@@ -29,8 +29,12 @@ local function validate(path)
 
   -- check if file exists
   if not file_exists then
-    api.nvim_err_writeln("file does not exists")
-    return
+    if error then
+      api.nvim_err_writeln(string.format("file %s does not exists", path))
+      return
+    else
+      return nil
+    end
   end
 
   return path
@@ -41,7 +45,7 @@ function M.close_window()
 end
 
 -- open_window draws a custom window with the markdown contents
-local function open_window(path)
+local function open_window(path, options)
 
   -- window size
   local width = api.nvim_get_option("columns")
@@ -76,19 +80,28 @@ local function open_window(path)
   api.nvim_buf_set_keymap(buf, "n", "<Esc>", ":lua require('rich').close_window()<cr>",
                           {noremap = true, silent = true})
 
-  vim.fn.termopen(string.format("%s %s --theme %s ", rich_path, vim.fn.shellescape(path), rich_style))
+  vim.fn.termopen(string.format("%s %s --theme %s %s", rich_path, vim.fn.shellescape(path), rich_style, options))
 end
 
 function M.rich(file)
+  local args={}
+  for match in (file..","):gmatch("(.-)"..",") do
+    table.insert(args, match);
+  end
+  local file = ""
+  if validate(args[1], false) ~= nil then
+    file = table.remove(args, 1)
+  end
+  local options = table.concat(args, " ")
   local current_win = vim.fn.win_getid()
   if current_win == win then
     M.close_window()
   else
-    local path = validate(file)
+    local path = validate(file, true)
     if path == nil then
       return
     end
-    open_window(path)
+    open_window(path, options)
   end
 end
 

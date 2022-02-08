@@ -39,7 +39,7 @@ let g:rich_path = "~/venv/bin/rich"
 ```
 
 ```lua
-vim.g.rich_border = "~/venv/bin/rich"
+vim.g.rich_path = "~/venv/bin/rich"
 ```
 
 - `rich_border`
@@ -85,11 +85,11 @@ default is `material`
 Example:
 
 ```viml
-let g:glow_style = "dracula"
+let g:rich_style = "dracula"
 ```
 
 ```lua
-vim.g.glow_style = "dracula"
+vim.g.rich_style = "dracula"
 ```
 
 ## Usage
@@ -120,6 +120,25 @@ window's height and width max at once
 ```viml
 noremap <C-w>z <C-w>\|<C-w>\_
 ```
+
+### Screenshots
+
+Pictures are worth a thousand words
+
+Here we see the preview window displaying markdown with the plugin's default border settings
+![preview markdown](/../screenshots/markdown_borderless.png?raw=true "Preview Markdown with no border")
+
+Here we are previewing with border set to "rounded"
+![preview markdown](/../screenshots/markdown_border.png?raw=true "Preview Markdown with border")
+
+Similarly we can preview RST in the same manner
+![preview rst](/../screenshots/rst.png?raw=true "Preview RST")
+
+As well as CSV files.
+![preview csv](/../screenshots/csv.png?raw=true "Preview csv")
+
+I wll not interate through all the possibilities that `rich-cli` allows us to preview. 
+If `rich-cli` can preview a file this plugin should be able to show it in a pop-up window.
 
 ### Credits
 

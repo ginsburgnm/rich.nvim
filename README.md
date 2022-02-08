@@ -121,6 +121,25 @@ window's height and width max at once
 noremap <C-w>z <C-w>\|<C-w>\_
 ```
 
+### Screenshots
+
+Pictures are worth a thousand words
+
+Here we see the preview window displaying markdown with the plugin's default border settings
+![preview markdown](/../screenshots/markdown_borderless.png?raw=true "Preview Markdown with no border")
+
+Here we are previewing with border set to "rounded"
+![preview markdown](/../screenshots/markdown_border.png?raw=true "Preview Markdown with border")
+
+Similarly we can preview RST in the same manner
+![preview rst](/../screenshots/rst.png?raw=true "Preview RST")
+
+As well as CSV files.
+![preview csv](/../screenshots/csv.png?raw=true "Preview csv")
+
+I wll not interate through all the possibilities that `rich-cli` allows us to preview. 
+If `rich-cli` can preview a file this plugin should be able to show it in a pop-up window.
+
 ### Credits
 
 This was HEAVILY influenced by [glow.nvim](https://github.com/ellisonleao/glow.nvim)

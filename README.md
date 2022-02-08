@@ -39,7 +39,7 @@ let g:rich_path = "~/venv/bin/rich"
 ```
 
 ```lua
-vim.g.rich_border = "~/venv/bin/rich"
+vim.g.rich_path = "~/venv/bin/rich"
 ```
 
 - `rich_border`
@@ -85,11 +85,11 @@ default is `material`
 Example:
 
 ```viml
-let g:glow_style = "dracula"
+let g:rich_style = "dracula"
 ```
 
 ```lua
-vim.g.glow_style = "dracula"
+vim.g.rich_style = "dracula"
 ```
 
 ## Usage

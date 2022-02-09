@@ -133,20 +133,26 @@ noremap <C-w>z <C-w>\|<C-w>\_
 
 Pictures are worth a thousand words
 
-Here we see the preview window displaying markdown with the plugin's default border settings
+Here we see the preview window displaying markdown with the plugin's default
+border settings
 ![preview markdown](/../screenshots/markdown_borderless.png?raw=true "Preview Markdown with no border")
 
-Here we are previewing with border set to "rounded"
+Here we are previewing with border set to "rounded" (I have changed the color
+of my border by setting highlight for `FloatBorder`
 ![preview markdown](/../screenshots/markdown_border.png?raw=true "Preview Markdown with border")
 
 Similarly we can preview RST in the same manner
 ![preview rst](/../screenshots/rst.png?raw=true "Preview RST")
 
 As well as CSV files.
-![preview csv](/../screenshots/csv.png?raw=true "Preview csv")
+![preview csv](/../screenshots/csv.png?raw=true "Preview CSV")
 
-I wll not interate through all the possibilities that `rich-cli` allows us to preview. 
-If `rich-cli` can preview a file this plugin should be able to show it in a pop-up window.
+And JSON files ...
+![preview csv](/../screenshots/json.png?raw=true "Preview JSON")
+
+I wll not interate through all the possibilities that `rich-cli` allows us to
+preview.  If `rich-cli` can preview a file this plugin should be able to show
+it in a pop-up window.
 
 ### Credits
 

@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 local win, buf
 
 local rich_path = vim.g.rich_path or "rich"
@@ -8,24 +9,15 @@ local rich_width = vim.g.rich_width
 
 local M = {}
 
-local function has_value(tab, val)
-  for _, value in ipairs(tab) do
-    if value == val:lower() then
-      return true
-    end
-  end
-  return false
-end
-
 local function validate(path, error)
 
   -- trim and get the full path
   path = string.gsub(path, "%s+", "")
   path = string.gsub(path, "\"", "")
   path = path == "" and "%" or path
-  path = vim.fn.expand(path)
-  path = vim.fn.fnamemodify(path, ":p")
-  local file_exists = vim.fn.filereadable(path) == 1
+  path = fn.expand(path)
+  path = fn.fnamemodify(path, ":p")
+  local file_exists = fn.filereadable(path) == 1
 
   -- check if file exists
   if not file_exists then
@@ -80,12 +72,12 @@ local function open_window(path, options)
   api.nvim_buf_set_keymap(buf, "n", "<Esc>", ":lua require('rich').close_window()<cr>",
                           {noremap = true, silent = true})
 
-  vim.fn.termopen(string.format("%s %s --theme %s %s", rich_path, vim.fn.shellescape(path), rich_style, options))
+  fn.termopen(string.format("%s %s --theme %s %s", rich_path, fn.shellescape(path), rich_style, options))
 end
 
-function M.rich(file)
+function M.rich(fileargs)
   local args={}
-  for match in (file..","):gmatch("(.-)"..",") do
+  for match in (fileargs..","):gmatch("(.-)"..",") do
     table.insert(args, match);
   end
   local file = ""
@@ -93,7 +85,7 @@ function M.rich(file)
     file = table.remove(args, 1)
   end
   local options = table.concat(args, " ")
-  local current_win = vim.fn.win_getid()
+  local current_win = fn.win_getid()
   if current_win == win then
     M.close_window()
   else

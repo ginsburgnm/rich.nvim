@@ -147,7 +147,8 @@ Similarly we can preview RST in the same manner
 As well as CSV files.
 ![preview csv](/../screenshots/csv.png?raw=true "Preview CSV")
 
-And JSON files ...
+And JSON files you will note here that I specified to preview a different
+file than the one I an currently editing by providing a file path.
 ![preview csv](/../screenshots/json.png?raw=true "Preview JSON")
 
 I wll not interate through all the possibilities that `rich-cli` allows us to

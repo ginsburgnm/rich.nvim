@@ -12,7 +12,7 @@ local M = {}
 local function validate(path, error)
 
   -- trim and get the full path
-  path = string.gsub(path, "%s+", "")
+  path = string.gsub(path, "%s+", "\\ ")
   path = string.gsub(path, "\"", "")
   path = path == "" and "%" or path
   path = fn.expand(path)
@@ -72,10 +72,11 @@ local function open_window(path, options)
   api.nvim_buf_set_keymap(buf, "n", "<Esc>", ":lua require('rich').close_window()<cr>",
                           {noremap = true, silent = true})
 
-  fn.termopen(string.format("%s %s --theme %s %s", rich_path, fn.shellescape(path), rich_style, options))
+  fn.termopen(string.format("%s '%s' --theme %s %s", rich_path, path, rich_style, options))
 end
 
 function M.rich(fileargs)
+  -- api.nvim_err_writeln(string.format("file %s does not exist", fileargs))
   local args={}
   for match in (fileargs..","):gmatch("(.-)"..",") do
     table.insert(args, match);
